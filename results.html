@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MinorMap+ – Results</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1B1A1B">
+</head>
+<body class="page page--fadein">
+
+  <nav class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand-inline">MinorMap+</div>
+      <div class="nav-actions">
+        <!-- "Try Another" button moved to the main content area -->
+        <button class="btn btn--ghost ripple logout-btn" type="button">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero reveal-anim">
+      <h2>Your Eligibility Results</h2>
+      <p class="muted" id="resultsSubtitle">Here is the breakdown for your selected minor.</p>
+    </section>
+
+    <!-- JS will render animated result cards -->
+    <section id="resultsGrid" class="grid cols-2">
+      <!-- Result cards will be injected here by main.js -->
+    </section>
+
+    <div class="actions-row reveal-anim">
+      <!-- Replaced download button with primary navigation button -->
+      <button class="btn btn--primary ripple" id="navHome">Try Another Minor</button>
+    </div>
+  </main>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
