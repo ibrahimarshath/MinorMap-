@@ -3,41 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MinorMap+ – Login</title>
+  <title>MinorMap+ — Login</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <meta name="theme-color" content="#1B1A1B">
+  <meta name="theme-color" content="#282A36">
 </head>
 <body class="page page--fadein">
+
+  <!-- Universal Toast Message -->
+  <div id="toast" class="toast"></div>
 
   <main class="layout container">
     <div class="brand">
       <h1 class="logo">MinorMap+</h1>
-      <p class="lede">Welcome back – sign in to continue your journey.</p>
+      <p class="lede">Choose how you want to sign in.</p>
     </div>
 
-    <form id="loginForm" class="panel form-panel" autocomplete="off">
-      <div class="field">
-        <input id="emailLogin" name="email" type="email" placeholder=" " required />
-        <label for="emailLogin">Email Address</label>
-      </div>
+    <section class="panel form-panel">
+      <header class="panel-header">
+        <p class="badge">Students</p>
+        <h2>User Login</h2>
+        <p class="muted small">Access your quizzes and saved progress.</p>
+      </header>
 
-      <div class="field">
-        <input id="passwordLogin" name="password" type="password" placeholder=" " required />
-        <label for="passwordLogin">Password</label>
-      </div>
+      <form id="loginForm" autocomplete="off">
+        <div class="field">
+          <input id="emailLogin" name="email" type="email" placeholder=" " required />
+          <label for="emailLogin">Email Address</label>
+        </div>
 
-      <div class="actions">
-        <!-- The "Demo Sign In" button has been removed as requested -->
-        <button class="btn btn--primary ripple" type="submit">Sign In</button>
-      </div>
+        <div class="field">
+          <input id="passwordLogin" name="password" type="password" placeholder=" " required />
+          <label for="passwordLogin">Password</label>
+        </div>
 
-      <p class="muted small text-center" style="margin-top: 20px;">
-        New here? <a href="register.html">Create an account</a>
-      </p>
-    </form>
+        <div class="actions">
+          <button class="btn btn--primary ripple" type="submit">Sign In</button>
+        </div>
+      </form>
+
+      <div class="login-links">
+        <p class="muted small">New here? <a href="register.html">Create your account</a></p>
+      </div>
+    </section>
   </main>
 
   <script src="main.js" defer></script>
