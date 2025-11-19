@@ -103,7 +103,7 @@ exports.submitTest = async (req, res, next) => {
       const maxWeight = maxPossibleWeights.get(minor.id);
       const rawScore = scores.get(minor.id);
       const finalScore =
-        maxWeight > 0 ? (rawScore / maxWeight) * 10 : 0;
+        maxWeight > 0 ? (rawScore / maxWeight) * 100 : 0;
       finalScores.set(minor.id, parseFloat(finalScore.toFixed(2)));
     });
 

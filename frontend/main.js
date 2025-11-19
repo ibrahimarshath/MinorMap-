@@ -313,7 +313,7 @@
   }
 
   // 4. Quiz Page
-  function initQuizPage() {
+  async function initQuizPage() {
     const quizContainer = $('#quizContainer');
     if (!quizContainer) return;
 
@@ -333,7 +333,36 @@
       return;
     }
 
-    const questions = QUIZ_DATA[minorId] || [];
+    // Try to load questions from backend quiz bank first. Fall back to local UI-only quizzes.
+    let questions = [];
+    let useBackend = false;
+    const tryLoadBackend = async () => {
+      try {
+        const resp = await fetch(`/api/quizbank/${minorId}/questions`);
+        if (!resp.ok) throw new Error('Network response not ok');
+        const body = await resp.json();
+        if (body && body.success && Array.isArray(body.data) && body.data.length > 0) {
+          // Map backend schema -> UI quiz schema used by this file
+          questions = body.data.map(q => ({
+            id: q.id,
+            text: q.question,
+            options: (q.options || []).map(opt => ({ text: opt, value: opt })),
+          }));
+          useBackend = true;
+        }
+      } catch (err) {
+        // silently fall back to local quizzes
+        console.warn('Failed to load backend quizbank:', err && err.message);
+      }
+    };
+
+    // Load backend questions (async) then fall back to local if needed
+    await tryLoadBackend();
+
+    if (!useBackend) {
+      questions = QUIZ_DATA[minorId] || [];
+    }
+
     if (questions.length === 0) {
       // Handle case where quiz isn't defined
       quizContainer.innerHTML = `
@@ -427,18 +456,68 @@
           showToast('Please answer all questions', 'info');
           return;
         }
+        // If using backend quizbank, POST answers to validator to get per-question correctness
+        if (useBackend) {
+          const payload = {
+            minorId,
+            answers: questions.map((q, i) => ({ id: q.id, answer: userAnswers[i].text }))
+          };
 
-        const results = {
-          questions: questions.map(q => q.text),
-          answers: userAnswers,
-        };
-        tempState.quizResults = results;
-        try { localStorage.setItem('quizResults', JSON.stringify(results)); } catch (e) { }
-        if (window.appViews) {
-          window.appViews.showOnly(document.getElementById('resultsView'));
+          fetch('/api/quizbank/validate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          }).then(r => r.json()).then(body => {
+            if (body && body.success && Array.isArray(body.results)) {
+              const results = {
+                questions: questions.map(q => q.text),
+                answers: userAnswers,
+                backendValidation: body.results, // [{id, correct}]
+                minorId,
+              };
+              tempState.quizResults = results;
+              try { localStorage.setItem('quizResults', JSON.stringify(results)); } catch (e) { }
+              if (window.appViews) {
+                window.appViews.showOnly(document.getElementById('resultsView'));
+              } else {
+                window.location.href = 'results.html';
+              }
+            } else {
+              showToast('Could not validate answers (server). Showing local results.', 'error');
+              const results = { questions: questions.map(q => q.text), answers: userAnswers };
+              tempState.quizResults = results;
+              try { localStorage.setItem('quizResults', JSON.stringify(results)); } catch (e) { }
+              if (window.appViews) {
+                window.appViews.showOnly(document.getElementById('resultsView'));
+              } else {
+                window.location.href = 'results.html';
+              }
+            }
+          }).catch(err => {
+            console.error('Validation request failed', err);
+            showToast('Validation failed — showing local results.', 'error');
+            const results = { questions: questions.map(q => q.text), answers: userAnswers };
+            tempState.quizResults = results;
+            try { localStorage.setItem('quizResults', JSON.stringify(results)); } catch (e) { }
+            if (window.appViews) {
+              window.appViews.showOnly(document.getElementById('resultsView'));
+            } else {
+              window.location.href = 'results.html';
+            }
+          });
         } else {
-          // Standalone flow: redirect to results page
-          window.location.href = 'results.html';
+          const results = {
+            questions: questions.map(q => q.text),
+            answers: userAnswers,
+          };
+          tempState.quizResults = results;
+          try { localStorage.setItem('quizResults', JSON.stringify(results)); } catch (e) { }
+          if (window.appViews) {
+            window.appViews.showOnly(document.getElementById('resultsView'));
+          } else {
+            // Standalone flow: redirect to results page
+            window.location.href = 'results.html';
+          }
         }
       }
     });
@@ -476,50 +555,79 @@
     $('#resultsSubtitle').textContent = `Here is the breakdown for the "${minor.name}" minor.`;
     resultsGrid.innerHTML = ''; // Clear
 
-    let eligibleCount = 0;
-    
-    resultsData.answers.forEach((answer, i) => {
-      const questionText = resultsData.questions[i];
-      const isEligible = answer.value === true;
-      
-      if (isEligible) eligibleCount++;
-      
-      let status = isEligible ? 'Eligible' : 'Not Eligible';
-      let statusClass = isEligible ? 'status-badge--eligible' : 'status-badge--ineligible';
-      let description = `Your answer ("${answer.text}") indicates you ${isEligible ? 'meet' : 'do not meet'} this requirement.`;
+    // If backendValidation exists, show correct/incorrect. Otherwise treat as boolean eligibility (legacy local quizzes).
+    let correctCount = 0;
+    if (resultsData.backendValidation && Array.isArray(resultsData.backendValidation)) {
+      // backendValidation: [{id, correct}]
+      resultsData.questions.forEach((questionText, i) => {
+        const userAnswer = resultsData.answers[i];
+        const qid = (resultsData.backendValidation[i] && resultsData.backendValidation[i].id) || null;
+        const validation = resultsData.backendValidation.find(r => r.id === qid) || resultsData.backendValidation[i] || { correct: false };
+        const isCorrect = !!validation.correct;
+        if (isCorrect) correctCount++;
 
-      const el = document.createElement('div');
-      el.className = 'result-card reveal-anim';
-      el.style.setProperty('--delay', `${(i + 1) * 0.1}s`);
-      el.innerHTML = `
-        <div class="result-header">
-          <h3>${questionText}</h3>
-          <span class="status-badge ${statusClass}">${status}</span>
-        </div>
-        <div class="result-body">
-          <p>${description}</p>
-        </div>
-      `;
-      resultsGrid.appendChild(el);
-    });
+        const status = isCorrect ? 'Correct' : 'Incorrect';
+        const statusClass = isCorrect ? 'status-badge--eligible' : 'status-badge--ineligible';
+        const description = `Your answer ("${userAnswer && userAnswer.text}") is ${isCorrect ? 'correct' : 'not correct'}.`;
+
+        const el = document.createElement('div');
+        el.className = 'result-card reveal-anim';
+        el.style.setProperty('--delay', `${(i + 1) * 0.1}s`);
+        el.innerHTML = `
+          <div class="result-header">
+            <h3>${questionText}</h3>
+            <span class="status-badge ${statusClass}">${status}</span>
+          </div>
+          <div class="result-body">
+            <p>${description}</p>
+          </div>
+        `;
+        resultsGrid.appendChild(el);
+      });
+    } else {
+      // Legacy boolean-style quizzes (Yes/No) where option.value === true means eligible
+      resultsData.answers.forEach((answer, i) => {
+        const questionText = resultsData.questions[i];
+        const isEligible = answer && answer.value === true;
+        if (isEligible) correctCount++;
+
+        let status = isEligible ? 'Eligible' : 'Not Eligible';
+        let statusClass = isEligible ? 'status-badge--eligible' : 'status-badge--ineligible';
+        let description = `Your answer ("${answer && answer.text}") indicates you ${isEligible ? 'meet' : 'do not meet'} this requirement.`;
+
+        const el = document.createElement('div');
+        el.className = 'result-card reveal-anim';
+        el.style.setProperty('--delay', `${(i + 1) * 0.1}s`);
+        el.innerHTML = `
+          <div class="result-header">
+            <h3>${questionText}</h3>
+            <span class="status-badge ${statusClass}">${status}</span>
+          </div>
+          <div class="result-body">
+            <p>${description}</p>
+          </div>
+        `;
+        resultsGrid.appendChild(el);
+      });
+    }
 
     // Add overall result card
     const totalQuestions = resultsData.questions.length;
-    const score = (eligibleCount / totalQuestions);
+    const score = (correctCount / totalQuestions);
     let overallStatus, overallStatusClass, overallDescription;
 
     if (score === 1) {
-      overallStatus = 'Fully Eligible';
+      overallStatus = 'Perfect Score';
       overallStatusClass = 'status-badge--eligible';
-      overallDescription = 'Congratulations! You meet all the preliminary requirements for this minor.';
+      overallDescription = 'Excellent — all answers are correct.';
     } else if (score >= 0.5) {
-      overallStatus = 'Potentially Eligible';
+      overallStatus = 'Good Performance';
       overallStatusClass = 'status-badge--potential';
-      overallDescription = `You meet ${eligibleCount} out of ${totalQuestions} requirements. You may still be eligible, but should consult an advisor.`;
+      overallDescription = `You answered ${correctCount} out of ${totalQuestions} correctly.`;
     } else {
-      overallStatus = 'Not Eligible';
+      overallStatus = 'Needs Improvement';
       overallStatusClass = 'status-badge--ineligible';
-      overallDescription = `You meet ${eligibleCount} out of ${totalQuestions} requirements. This minor may not be the right fit.`;
+      overallDescription = `You answered ${correctCount} out of ${totalQuestions} correctly.`;
     }
 
     const overallCard = document.createElement('div');
