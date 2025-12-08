@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const fileUserStore = require('../utils/fileUserStore');
 
 // Protect routes - verify JWT token
 exports.protect = async (req, res, next) => {
@@ -20,15 +20,18 @@ exports.protect = async (req, res, next) => {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Get user from token
-    req.user = await User.findById(decoded.id).select('-password');
+    // Get user from token (file store)
+    const user = await fileUserStore.findById(decoded.id);
 
-    if (!req.user) {
+    if (!user) {
       return res.status(401).json({
         success: false,
         message: 'User not found',
       });
     }
+
+    // Attach minimal user info for downstream handlers
+    req.user = { id: user.id || user._id, role: user.role };
 
     next();
   } catch (error) {

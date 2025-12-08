@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "5fa0c3b4-7806-4c70-ae68-bc1dc6edbd8e",
+    "id": "5fa0c3b4-7806-4c70-ae68-bc1dc6edbd8e",
+    "name": "Rashika",
+    "email": "rashika@gmail.com",
+    "password": "$2a$10$2b4YulvSvEw1bZ/w2mwCJOWqeVqG5EHIz47q1W/pxKN0zOC./QhSy",
+    "role": "student",
+    "createdAt": "2025-12-08T10:49:17.070Z"
+  }
+]

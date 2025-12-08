@@ -25,6 +25,20 @@
     }, duration);
   }
 
+  // --- Password toggle helper ---
+  function setupPasswordToggle(inputId, formSelector) {
+    const input = document.getElementById(inputId);
+    const toggle = document.querySelector(`${formSelector} .password-toggle`);
+    if (!input || !toggle) return;
+    toggle.addEventListener('click', () => {
+      const isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+      // Use simple emoji as affordance; keep text fallback minimal
+      toggle.textContent = isHidden ? '🙈' : '👁';
+    });
+  }
+
   // --- Fake Auth System (localStorage) ---
   // Use a small transient cache but persist important state to localStorage
   const tempState = {
@@ -207,6 +221,9 @@
   function initLoginPage() {
     const loginForm = $('#loginForm');
 
+    // wire up password visibility toggle
+    setupPasswordToggle('passwordLogin', '#loginForm');
+
     if (loginForm) {
       loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -218,12 +235,33 @@
           return;
         }
 
-        showToast('Welcome back — redirecting...', 'success');
-        const guestName = email.split('@')[0];
-        setSession({ name: guestName, email, role: 'user' });
-        setTimeout(() => {
-          window.location.href = `selectminor.html?role=user&name=${encodeURIComponent(guestName)}&email=${encodeURIComponent(email)}`;
-        }, 600);
+        // Call backend login API
+        fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        })
+          .then((r) => r.json())
+          .then((body) => {
+            if (body && body.success && body.data && body.data.token) {
+              const user = body.data.user;
+              const token = body.data.token;
+              // Save user session and token
+              setSession({ name: user.name, email: user.email, role: user.role, id: user.id });
+              try { localStorage.setItem('minor_token', token); } catch (e) { /* ignore */ }
+              showToast('Welcome back — redirecting...', 'success');
+              setTimeout(() => {
+                window.location.href = `selectminor.html?role=${encodeURIComponent(user.role)}&name=${encodeURIComponent(user.name)}&email=${encodeURIComponent(user.email)}`;
+              }, 600);
+            } else {
+              const msg = (body && body.message) ? body.message : 'Login failed';
+              showToast(msg, 'error');
+            }
+          })
+          .catch((err) => {
+            console.error('Login request failed', err);
+            showToast('Login request failed', 'error');
+          });
       });
     }
 
@@ -232,8 +270,10 @@
   // 2. Register Page
   function initRegisterPage() {
     const registerForm = $('#registerForm');
+    // wire up password visibility toggle
+    setupPasswordToggle('passwordRegister', '#registerForm');
     if (!registerForm) return;
-    // UI-only registration: redirect to combined user UI (no persistence)
+    // Register via backend and persist token/user on success
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = ($('#nameRegister').value || '').trim();
@@ -245,9 +285,29 @@
         return;
       }
 
-      showToast('Account created (UI-only). Opening user UI...', 'success');
-      setSession({ name, email, role: 'user' });
-      setTimeout(() => { window.location.href = `selectminor.html?role=user&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`; }, 700);
+      fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password }),
+      })
+        .then((r) => r.json())
+        .then((body) => {
+          if (body && body.success && body.data && body.data.token) {
+            const user = body.data.user;
+            const token = body.data.token;
+            setSession({ name: user.name, email: user.email, role: user.role, id: user.id });
+            try { localStorage.setItem('minor_token', token); } catch (e) { /* ignore */ }
+            showToast('Account created. Redirecting...', 'success');
+            setTimeout(() => { window.location.href = `selectminor.html?role=${encodeURIComponent(user.role)}&name=${encodeURIComponent(user.name)}&email=${encodeURIComponent(user.email)}`; }, 700);
+          } else {
+            const msg = (body && body.message) ? body.message : 'Registration failed';
+            showToast(msg, 'error');
+          }
+        })
+        .catch((err) => {
+          console.error('Register request failed', err);
+          showToast('Registration request failed', 'error');
+        });
     });
   }
 
