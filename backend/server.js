@@ -36,6 +36,10 @@ app.use('/api', require('./routes/quizBankRoutes'));
 // Unified quiz API that prefers DB-backed quizzes and falls back to quizBank
 app.use('/api/quiz', require('./routes/quizRoutes'));
 
+// Serve static files from frontend
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 // Health check route
 app.get('/api/health', (req, res) => {
   res.status(200).json({
@@ -43,6 +47,11 @@ app.get('/api/health', (req, res) => {
     message: 'MinorMap+ API is running',
     timestamp: new Date().toISOString(),
   });
+});
+
+// Redirect root to login
+app.get('/', (req, res) => {
+  res.redirect('/login.html');
 });
 
 // Error handler (must be last)
@@ -54,8 +63,10 @@ const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
   console.log(`\n🚀 MinorMap+ Server running on port ${PORT}`);
   console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🏠 Application: http://localhost:${PORT}/`);
   console.log(`🔗 Health check: http://localhost:${PORT}/api/health\n`);
 });
+
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
