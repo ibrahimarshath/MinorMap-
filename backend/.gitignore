@@ -3,7 +3,9 @@ node_modules/
 package-lock.json
 
 # Environment variables
-.env
+# Environment variables
+# .env
+
 .env.local
 
 # Logs
