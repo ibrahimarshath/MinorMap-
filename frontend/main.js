@@ -395,6 +395,7 @@
 
     // Try to load questions from backend quiz bank first. Fall back to local UI-only quizzes.
     let questions = [];
+    let quizSetId = null;
     let useBackend = false;
     const tryLoadBackend = async () => {
       try {
@@ -408,6 +409,7 @@
             text: q.question,
             options: (q.options || []).map(opt => ({ text: opt, value: opt })),
           }));
+          quizSetId = body.set;
           useBackend = true;
         }
       } catch (err) {
@@ -436,7 +438,7 @@
       `;
       return;
     }
-    
+
     let currentQuestionIndex = 0;
     let userAnswers = tempState.quizAnswers || new Array(questions.length).fill(null);
 
@@ -460,7 +462,7 @@
         const el = document.createElement('div');
         el.className = 'answer-card';
         el.textContent = option.text;
-        
+
         if (userAnswers[currentQuestionIndex] !== null && userAnswers[currentQuestionIndex].text === option.text) {
           el.classList.add('selected');
         }
@@ -489,7 +491,7 @@
     function updateNav() {
       progressText.textContent = `Question ${currentQuestionIndex + 1} / ${questions.length}`;
       prevBtn.disabled = (currentQuestionIndex === 0);
-      
+
       if (currentQuestionIndex === questions.length - 1) {
         nextBtn.textContent = 'Finish Quiz';
         nextBtn.disabled = (userAnswers[currentQuestionIndex] === null);
@@ -516,10 +518,11 @@
           showToast('Please answer all questions', 'info');
           return;
         }
-        // If using backend quizbank, POST answers to validator to get per-question correctness
+        // If using backend quizbank, POST answers to validator to get per-question correctness or eligibility
         if (useBackend) {
           const payload = {
             minorId,
+            setId: quizSetId,
             answers: questions.map((q, i) => ({ id: q.id, answer: userAnswers[i].text }))
           };
 
@@ -528,13 +531,24 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
           }).then(r => r.json()).then(body => {
-            if (body && body.success && Array.isArray(body.results)) {
+            if (body && body.success) {
+              // Determine result structure (Eligibility or Validation Array)
               const results = {
                 questions: questions.map(q => q.text),
                 answers: userAnswers,
-                backendValidation: body.results, // [{id, correct}]
                 minorId,
               };
+
+              if (body.eligibility) {
+                // New format
+                results.eligibility = body.eligibility;
+                results.finalScore = body.finalScore;
+                results.breakdown = body.breakdown;
+              } else if (Array.isArray(body.results)) {
+                // Old format
+                results.backendValidation = body.results;
+              }
+
               tempState.quizResults = results;
               try { localStorage.setItem('quizResults', JSON.stringify(results)); } catch (e) { }
               if (window.appViews) {
@@ -612,8 +626,56 @@
       return;
     }
 
+    // Event Listener for Home Navigation (Try Another Minor)
+    const navHomeBtn = $('#navHome');
+    if (navHomeBtn) {
+      navHomeBtn.addEventListener('click', () => {
+        // Clear previous selection/results to start fresh
+        tempState.selectedMinor = null;
+        tempState.quizAnswers = null;
+        tempState.quizResults = null;
+        try {
+          localStorage.removeItem('selectedMinor');
+          localStorage.removeItem('quizAnswers');
+          localStorage.removeItem('quizResults');
+        } catch (e) { }
+
+        if (window.appViews) {
+          window.appViews.showOnly(document.getElementById('selectMinorView'));
+        } else {
+          window.location.href = 'selectminor.html';
+        }
+      });
+    }
+
     $('#resultsSubtitle').textContent = `Here is the breakdown for the "${minor.name}" minor.`;
     resultsGrid.innerHTML = ''; // Clear
+
+    // Handle Eligibility Result (New Format)
+    if (resultsData.eligibility) {
+      const eligibility = resultsData.eligibility;
+      const finalScore = resultsData.finalScore;
+      let statusClass = 'status-badge--ineligible';
+      if (eligibility === 'Highly Eligible') statusClass = 'status-badge--eligible';
+      else if (eligibility === 'Moderately Eligible') statusClass = 'status-badge--potential';
+
+      const overallCard = document.createElement('div');
+      overallCard.className = 'result-card reveal-anim';
+      overallCard.style.setProperty('--delay', '0s');
+      overallCard.style.gridColumn = '1 / -1';
+      overallCard.innerHTML = `
+          <div class="result-header">
+            <h3>Eligibility Result</h3>
+            <span class="status-badge ${statusClass}">${eligibility}</span>
+          </div>
+          <div class="result-body">
+            <p>Your calculated aptitude score is <strong>${Math.round(finalScore * 100)}%</strong>.</p>
+            <p>${eligibility === 'Highly Eligible' ? 'You are an excellent fit for this minor!' : (eligibility === 'Moderately Eligible' ? 'You have potential for this minor.' : 'You might want to consider exploring other options.')}</p>
+          </div>
+        `;
+      resultsGrid.appendChild(overallCard);
+      return; // Skip individual question breakdown for survey mode
+    }
 
     // If backendValidation exists, show correct/incorrect. Otherwise treat as boolean eligibility (legacy local quizzes).
     let correctCount = 0;
@@ -705,13 +767,6 @@
     `;
     resultsGrid.prepend(overallCard);
 
-    $('#navHome').addEventListener('click', () => {
-      if (window.appViews) {
-        window.appViews.showOnly(document.getElementById('selectMinorView'));
-      } else {
-        window.location.href = 'selectminor.html';
-      }
-    });
   }
 
   // --- Global Init & Common Listeners ---

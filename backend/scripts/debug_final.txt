@@ -1,0 +1,1624 @@
+{
+"ai-ml": {
+"minor": "Artificial Intelligence and Machine Learning",
+"sets": {
+"set1": [
+{
+"id": 1,
+"type": "personality",
+"question": "How comfortable are you with programming?",
+"options": [
+"Very comfortable"},
+"Somewhat comfortable",
+"Basic knowledge",
+"Not comfortable"
+],
+{
+"id": 2,
+"type": "personality",
+"question": "Do you enjoy solving math-heavy problems?",
+"options": [
+"Very interested"},
+"Somewhat interested",
+"Low interest",
+"Not interested"
+],
+{
+"id": 3,
+"type": "personality",
+"question": "How good are you at identifying patterns in data?",
+"options": [
+"Very good"},
+"Good",
+"Average",
+"Not good"
+],
+{
+"id": 4,
+"type": "domain",
+"question": "How familiar are you with machine learning concepts?",
+"options": [
+"Very familiar"},
+"Somewhat familiar",
+"Heard of them",
+"Not familiar"
+],
+{
+"id": 5,
+"type": "domain",
+"question": "How comfortable are you with Python programming?",
+"options": [
+"Very comfortable"},
+"Somewhat comfortable",
+"Basic knowledge",
+"No experience"
+],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you enjoy working with algorithms?",
+"options": [
+"Very much"},
+"Sometimes",
+"Rarely",
+"Not at all"
+],
+{
+"id": 7,
+"type": "psychological",
+"question": "How well do you handle challenging logical problems?",
+"options": [
+"Very well"},
+"Moderately well",
+"Not well",
+"Poorly"
+],
+{
+"id": 8,
+"type": "psychological",
+"question": "Do you stay calm when debugging complex code?",
+"options": [
+"Very calm"},
+"Somewhat calm",
+"Struggle sometimes",
+"Not calm"
+],
+{
+"id": 9,
+"type": "psychological",
+"question": "How do you handle long, detail-oriented tasks?",
+"options": [
+"Very effectively"},
+"Somewhat effectively",
+"Not very effectively",
+"Poorly"
+],
+{
+"id": 10,
+"type": "psychological",
+"question": "Do you enjoy continuous self-learning?",
+"options": [
+"Yes, a lot",
+"Sometimes",
+"Rarely",
+"Not at all"
+]
+ } ],
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you like analytical problem-solving?",
+"options": [
+"Love it"},
+"Like it",
+"Neutral",
+"Don't like it"
+],
+{
+"id": 2,
+"type": "personality",
+"question": "How comfortable are you learning new technical skills?",
+"options": [
+"Very comfortable"},
+"Somewhat comfortable",
+"Takes effort",
+"Not comfortable"
+],
+{
+"id": 3,
+"type": "personality",
+"question": "Do you enjoy experimenting with technology?",
+"options": [
+"Very much"},
+"Sometimes",
+"Rarely",
+"Not at all"
+],
+{
+"id": 4,
+"type": "domain",
+"question": "How well do you understand data structures?",
+"options": [
+"Strong understanding"},
+"Basic understanding",
+"Heard of them",
+"No knowledge"
+],
+{
+"id": 5,
+"type": "domain",
+"question": "Do you have experience with coding challenges?",
+"options": [
+"A lot"},
+"Some",
+"Very little",
+"None"
+],
+{
+"id": 6,
+"type": "domain",
+"question": "How interested are you in neural networks?",
+"options": [
+"Very interested"},
+"Somewhat interested",
+"A little interested",
+"Not interested"
+],
+{
+"id": 7,
+"type": "psychological",
+"question": "Do complex concepts overwhelm you?",
+"options": [
+"Rarely"},
+"Sometimes",
+"Often",
+"Always"
+],
+{
+"id": 8,
+"type": "psychological",
+"question": "How do you react to coding errors?",
+"options": [
+"Stay calm and fix"},
+"Try for some time",
+"Get annoyed",
+"Give up"
+],
+{
+"id": 9,
+"type": "psychological",
+"question": "Can you work with high mental focus?",
+"options": [
+"Easily"},
+"Sometimes",
+"Struggle",
+"Cannot"
+],
+{
+"id": 10,
+"type": "psychological",
+"question": "Do you enjoy thinking logically?",
+"options": [
+"A lot",
+"Sometimes",
+"Rarely",
+"Never"
+]
+ } ],
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "How comfortable are you with abstract thinking?",
+"options": [
+"Very comfortable"},
+"Somewhat comfortable",
+"A little comfortable",
+"Not comfortable"
+],
+{
+"id": 2,
+"type": "personality",
+"question": "Do you enjoy working on logical puzzles?",
+"options": [
+"Very much"},
+"Sometimes",
+"Rarely",
+"Not at all"
+],
+{
+"id": 3,
+"type": "personality",
+"question": "How do you feel about solving analytical problems?",
+"options": [
+"Excited"},
+"Okay with it",
+"Difficult sometimes",
+"Not good at it"
+],
+{
+"id": 4,
+"type": "domain",
+"question": "How familiar are you with supervised learning?",
+"options": [
+"Very familiar"},
+"Somewhat familiar",
+"Heard of it",
+"Not familiar"
+],
+{
+"id": 5,
+"type": "domain",
+"question": "How interested are you in working with datasets?",
+"options": [
+"Very interested"},
+"Somewhat interested",
+"Low interest",
+"Not interested"
+],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you enjoy experimenting and tuning models?",
+"options": [
+"Yes}, a lot",
+"Sometimes",
+"Rarely",
+"Not at all"
+],
+{
+"id": 7,
+"type": "psychological",
+"question": "Do you stay patient when learning complex topics?",
+"options": [
+"Very patient"},
+"Moderately patient",
+"Not patient",
+"Easily frustrated"
+],
+{
+"id": 8,
+"type": "psychological",
+"question": "How do you manage pressure during deadlines?",
+"options": [
+"Very well"},
+"Somewhat well",
+"Not well",
+"Poorly"
+],
+{
+"id": 9,
+"type": "psychological",
+"question": "How consistent are you when learning new subjects?",
+"options": [
+"Very consistent"},
+"Somewhat consistent",
+"Inconsistent",
+"Not consistent"
+],
+{
+"id": 10,
+"type": "psychological",
+"question": "Do you enjoy building things from scratch?",
+"options": [
+"Yes",
+"Sometimes",
+"Rarely",
+"No"
+]
+ } ]
+
+},
+
+"life-sci": {
+"minor": "Life Science",
+"sets": {
+"set1": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy understanding how living organisms work?",
+"options": ["Very much"}, "Sometimes", "Rarely", "Not at all"],
+{
+"id": 2,
+"type": "personality",
+"question": "How comfortable are you with observing details?",
+"options": ["Very comfortable"}, "Somewhat comfortable", "Basic comfort", "Not comfortable"],
+{
+"id": 3,
+"type": "personality",
+"question": "Do you like learning scientific concepts?",
+"options": ["Yes}, a lot", "Sometimes", "Rarely", "Not at all"],
+{
+"id": 4,
+"type": "domain",
+"question": "How familiar are you with basic biology?",
+"options": ["Very familiar"}, "Somewhat familiar", "Heard of concepts", "Not familiar"],
+{
+"id": 5,
+"type": "domain",
+"question": "How interested are you in genetics and DNA?",
+"options": ["Very interested"}, "Somewhat interested", "Low interest", "Not interested"],
+{
+"id": 6,
+"type": "domain",
+"question": "How comfortable are you with lab work?",
+"options": ["Very comfortable"}, "Somewhat comfortable", "Basic comfort", "Not comfortable"],
+{
+"id": 7,
+"type": "psychological",
+"question": "How well do you handle long, careful procedures?",
+"options": ["Very well"}, "Moderately well", "Not well", "Poorly"],
+{
+"id": 8,
+"type": "psychological",
+"question": "Do you stay calm during detailed experiments?",
+"options": ["Very calm"}, "Somewhat calm", "Struggle sometimes", "Not calm"],
+{
+"id": 9,
+"type": "psychological",
+"question": "How consistent are you with repeated tasks?",
+"options": ["Very consistent"}, "Somewhat consistent", "Inconsistent", "Not consistent"],
+{
+"id": 10,
+"type": "psychological",
+"question": "Do you enjoy learning through hands-on activities?",
+"options": ["Yes", "Sometimes", "Rarely", "No"]
+ } ],
+
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy studying nature and living systems?",
+"options": ["Very much"}, "Somewhat", "Low interest", "No interest"],
+{
+"id": 2,
+"type": "personality",
+"question": "Are you curious about how the human body functions?",
+"options": ["Very curious"}, "Somewhat curious", "Little curious", "Not curious"],
+{
+"id": 3,
+"type": "personality",
+"question": "Do you enjoy science-related discussions?",
+"options": ["A lot"}, "Sometimes", "Rarely", "Not at all"],
+{
+"id": 4,
+"type": "domain",
+"question": "How familiar are you with cell structure?",
+"options": ["Very familiar"}, "Somewhat familiar", "Heard of it", "Not familiar"],
+{
+"id": 5,
+"type": "domain",
+"question": "How interested are you in microbiology?",
+"options": ["Very interested"}, "Somewhat interested", "Low interest", "Not interested"],
+{
+"id": 6,
+"type": "domain",
+"question": "Have you used microscopes before?",
+"options": ["Many times"}, "A few times", "Only once", "Never"],
+{
+"id": 7,
+"type": "psychological",
+"question": "How good are you at following procedures?",
+"options": ["Very good"}, "Good", "Average", "Not good"],
+{
+"id": 8,
+"type": "psychological",
+"question": "Do you panic when experiments go wrong?",
+"options": ["Rarely"}, "Sometimes", "Often", "Always"],
+{
+"id": 9,
+"type": "psychological",
+"question": "Can you work patiently on slow processes?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you respond to scientific challenges?",
+"options": ["Motivated", "Neutral", "Confused", "Stressed"]
+ } ],
+
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy reading about science discoveries?",
+"options": ["Yes}, a lot", "Sometimes", "Rarely", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "How curious are you about animal or plant life?",
+"options": ["Very curious"}, "Somewhat curious", "Little curious", "Not curious"],
+{
+"id": 3,
+"type": "personality",
+"question": "Do you like tasks that require precision?",
+"options": ["Love them"}, "Like them", "Neutral", "Don’t like them"],
+{
+"id": 4,
+"type": "domain",
+"question": "How familiar are you with photosynthesis?",
+"options": ["Very familiar"}, "Somewhat familiar", "Heard of it", "Not familiar"],
+{
+"id": 5,
+"type": "domain",
+"question": "How interested are you in ecology?",
+"options": ["Very interested"}, "Somewhat interested", "Low interest", "Not interested"],
+{
+"id": 6,
+"type": "domain",
+"question": "Have you taken biology classes?",
+"options": ["Many times"}, "Some classes", "Few classes", "Never"],
+{
+"id": 7,
+"type": "psychological",
+"question": "How calm are you when handling lab samples?",
+"options": ["Very calm"}, "Somewhat calm", "Struggle", "Not calm"],
+{
+"id": 8,
+"type": "psychological",
+"question": "Do you stay focused during long lab sessions?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 9,
+"type": "psychological",
+"question": "How do you deal with scientific failures?",
+"options": ["Try again"}, "Try later", "Feel stressed", "Give up"],
+{
+"id": 10,
+"type": "psychological",
+"question": "Do you enjoy researching topics deeply?",
+"options": ["Very much", "Sometimes", "Rarely", "No"]
+ } ],
+
+"iot": {
+"minor": "Internet of Things",
+"sets": {
+"set1": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy working with electronic gadgets?",
+"options": ["Very much"}, "Somewhat", "Rarely", "Not at all"],
+{
+"id": 2,
+"type": "personality",
+"question": "How curious are you about how devices communicate?",
+"options": ["Very curious"}, "Somewhat curious", "Little curious", "Not curious"],
+{
+"id": 3,
+"type": "personality",
+"question": "Do you enjoy hands-on technical work?",
+"options": ["Yes}, a lot", "Sometimes", "Rarely", "No"],
+{
+"id": 4,
+"type": "domain",
+"question": "How familiar are you with sensors?",
+"options": ["Very familiar"}, "Somewhat familiar", "Heard of them", "Not familiar"],
+{
+"id": 5,
+"type": "domain",
+"question": "Do you have experience with microcontrollers?",
+"options": ["A lot"}, "Some", "Very little", "None"],
+{
+"id": 6,
+"type": "domain",
+"question": "How interested are you in automation projects?",
+"options": ["Very interested"}, "Somewhat interested", "Low interest", "Not interested"],
+{
+"id": 7,
+"type": "psychological",
+"question": "Do you stay calm when hardware malfunctions?",
+"options": ["Very calm"}, "Somewhat calm", "Struggle", "Not calm"],
+{
+"id": 8,
+"type": "psychological",
+"question": "Do you enjoy solving wiring or connection issues?",
+"options": ["Very much"}, "Sometimes", "Rarely", "Not at all"],
+{
+"id": 9,
+"type": "psychological",
+"question": "How well do you handle trial-and-error tasks?",
+"options": ["Very well"}, "Moderately", "Not well", "Poorly"],
+{
+"id": 10,
+"type": "psychological",
+"question": "Do you enjoy experimenting with hardware components?",
+"options": ["Yes", "Sometimes", "Rarely", "No"]
+ } ],
+
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you like building small electronic projects?",
+"options": ["Love it"}, "Like it", "Neutral", "Don't like it"],
+{
+"id": 2,
+"type": "personality",
+"question": "Do you enjoy fixing broken devices?",
+"options": ["Very much"}, "Sometimes", "Rarely", "Not at all"],
+{
+"id": 3,
+"type": "personality",
+"question": "How interested are you in connected devices?",
+"options": ["Very interested"}, "Somewhat interested", "Low interest", "Not interested"],
+{
+"id": 4,
+"type": "domain",
+"question": "How familiar are you with Wi-Fi or Bluetooth modules?",
+"options": ["Very familiar"}, "Somewhat familiar", "Heard of them", "Not familiar"],
+{
+"id": 5,
+"type": "domain",
+"question": "Do you know how circuits work?",
+"options": ["Strong understanding"}, "Basic understanding", "Heard of it", "No knowledge"],
+{
+"id": 6,
+"type": "domain",
+"question": "How comfortable are you with technical diagrams?",
+"options": ["Very comfortable"}, "Somewhat comfortable", "A little comfortable", "Not comfortable"],
+{
+"id": 7,
+"type": "psychological",
+"question": "Does hardware debugging stress you?",
+"options": ["Rarely"}, "Sometimes", "Often", "Always"],
+{
+"id": 8,
+"type": "psychological",
+"question": "How do you react to failed prototypes?",
+"options": ["Motivated"}, "Neutral", "Disappointed", "Frustrated"],
+{
+"id": 9,
+"type": "psychological",
+"question": "Can you work patiently on detailed assembly tasks?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "Do you enjoy exploring new hardware technologies?",
+"options": ["Very much", "Sometimes", "Rarely", "Not at all"]
+ } ],
+
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy experimenting with new tech tools?",
+"options": ["Yes}, a lot", "Sometimes", "Rarely", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "Are you curious about how electronics communicate?",
+"options": ["Very curious"}, "Somewhat curious", "Little curious", "Not curious"],
+{
+"id": 3,
+"type": "personality",
+"question": "Do you prefer hands-on learning?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 4,
+"type": "domain",
+"question": "How familiar are you with embedded systems?",
+"options": ["Very familiar"}, "Somewhat familiar", "Heard of them", "Not familiar"],
+{
+"id": 5,
+"type": "domain",
+"question": "How interested are you in IoT-based automation?",
+"options": ["Very interested"}, "Somewhat interested", "Low interest", "Not interested"],
+{
+"id": 6,
+"type": "domain",
+"question": "Have you ever built an IoT prototype?",
+"options": ["Many times"}, "A few times", "Once", "Never"],
+{
+"id": 7,
+"type": "psychological",
+"question": "Do you work well under technical pressure?",
+"options": ["Very well"}, "Moderately", "Not well", "Poorly"],
+{
+"id": 8,
+"type": "psychological",
+"question": "How do you respond to repeating wiring tasks?",
+"options": ["Very patient"}, "Somewhat patient", "Not patient", "Frustrated"],
+{
+"id": 9,
+"type": "psychological",
+"question": "Can you troubleshoot devices independently?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "Do you enjoy iterative building and testing?",
+"options": ["Love it", "Like it", "Neutral", "Don’t like it"]
+ } ]
+
+
+"data-science": {
+"minor": "Data Science",
+"sets": {
+"set1": [
+{
+"id": 1,
+"type": "personality",
+"question": "How comfortable are you working with large datasets?",
+"options": ["Very comfortable"}, "Somewhat comfortable", "Not very comfortable", "Avoid it"],
+{
+"id": 2,
+"type": "personality",
+"question": "Do you enjoy finding patterns and hidden relationships in information?",
+"options": ["Always"}, "Sometimes", "Rarely", "Never"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you handle analytical pressure when results must be accurate?",
+"options": ["Stay calm"}, "Take time but complete", "Struggle a bit", "Get stressed easily"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How well do you handle continuous debugging of data errors?",
+"options": ["Very well"}, "Okay", "Not well", "Hate it"],
+{
+"id": 5,
+"type": "domain",
+"question": "What is your familiarity with statistics?",
+"options": ["Strong"}, "Moderate", "Basic", "None"],
+{
+"id": 6,
+"type": "domain",
+"question": "How comfortable are you using Python/R libraries (Pandas, NumPy)?",
+"options": ["Expert"}, "Intermediate", "Beginner", "Never used"],
+{
+"id": 7,
+"type": "domain",
+"question": "Can you interpret graphs, charts, and trends?",
+"options": ["Very well"}, "Somewhat", "Little", "Not at all"],
+{
+"id": 8,
+"type": "domain",
+"question": "Are you interested in machine learning models?",
+"options": ["Strong interest"}, "Some interest", "Little interest", "Not interested"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you enjoy solving puzzles and analytical problems?",
+"options": ["Love it"}, "Like it", "Neutral", "Dislike it"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you respond when a dataset gives inconsistent results?",
+"options": ["Investigate patiently", "Try few fixes", "Get irritated", "Give up"]
+ } ]
+,
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy tasks that require deep analytical thinking?",
+"options": ["Yes}, very much", "Sometimes", "Not much", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "How well do you stay focused on long data-cleaning tasks?",
+"options": ["Very well"}, "Somewhat", "Not good", "Terrible"],
+{
+"id": 3,
+"type": "psychological",
+"question": "Does pressure impact your accuracy while analyzing data?",
+"options": ["Never"}, "Rarely", "Sometimes", "Always"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How do you deal with repeated model failures?",
+"options": ["Keep trying different methods"}, "Take breaks and retry", "Get frustrated", "Leave it"],
+{
+"id": 5,
+"type": "domain",
+"question": "What’s your understanding of probability?",
+"options": ["Strong"}, "Good", "Basic", "None"],
+{
+"id": 6,
+"type": "domain",
+"question": "Can you perform basic data visualization?",
+"options": ["Yes}, well", "Somewhat", "Barely", "No"],
+{
+"id": 7,
+"type": "domain",
+"question": "Have you worked with CSV/JSON datasets?",
+"options": ["Many times"}, "Few times", "Once", "Never"],
+{
+"id": 8,
+"type": "domain",
+"question": "Do you understand supervised/unsupervised learning?",
+"options": ["Fully"}, "Somewhat", "Little", "Not at all"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you like step-by-step logical problem solving?",
+"options": ["Yes"}, "Sometimes", "Not much", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "When a dataset is messy, what’s your reaction?",
+"options": ["Challenge accepted", "Okay", "Annoyed", "Avoid it"]
+ } ]
+,
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "Are you naturally curious about why things happen?",
+"options": ["Very curious"}, "Somewhat", "Little", "Not at all"],
+{
+"id": 2,
+"type": "personality",
+"question": "Do you prefer accuracy over speed?",
+"options": ["Always"}, "Mostly", "Sometimes", "Never"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you handle continuous iterations of model tuning?",
+"options": ["Motivated"}, "Neutral", "Irritated", "Avoid it"],
+{
+"id": 4,
+"type": "psychological",
+"question": "What is your stress level when working with tight deadlines?",
+"options": ["Very low"}, "Moderate", "High", "Very high"],
+{
+"id": 5,
+"type": "domain",
+"question": "How familiar are you with Excel / Google Sheets?",
+"options": ["Expert"}, "Good", "Basic", "None"],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you know what a correlation matrix is?",
+"options": ["Yes"}, "A bit", "Heard of it", "No"],
+{
+"id": 7,
+"type": "domain",
+"question": "Rate your Python coding skills.",
+"options": ["Strong"}, "Intermediate", "Beginner", "None"],
+{
+"id": 8,
+"type": "domain",
+"question": "Are you interested in forecasting and predictions?",
+"options": ["Very interested"}, "Somewhat", "Little", "Not interested"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you enjoy comparing different solutions to find the best one?",
+"options": ["Yes"}, "Sometimes", "Rarely", "Never"],
+{
+"id": 10,
+"type": "psychological",
+"question": "What do you do when you get unexpected outcomes in analysis?",
+"options": ["Investigate deeply", "Try small fixes", "Get irritated", "Ignore it"]
+ } ]
+},
+
+"fintech": {
+"minor": "FinTech & Blockchain",
+"sets": {
+"set": 1,
+[
+{
+"id": 1,
+"type": "personality",
+"question": "How interested are you in the intersection of finance and technology?",
+"options": ["Very interested"}, "Somewhat interested", "Little interest", "No interest"],
+{
+"id": 2,
+"type": "personality",
+"question": "Do you enjoy solving logical and rule-based problems?",
+"options": ["Love it"}, "Like it", "Neutral", "Dislike it"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How well do you handle high responsibility tasks (like accuracy in financial data)?",
+"options": ["Very well"}, "Okay", "Struggle sometimes", "Poorly"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How do you respond when dealing with complex financial concepts?",
+"options": ["Excited"}, "Interested", "Confused", "Overwhelmed"],
+{
+"id": 5,
+"type": "domain",
+"question": "How familiar are you with digital payments and online banking?",
+"options": ["Very familiar"}, "Somewhat", "Basic", "Not familiar"],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you understand the concept of blockchain?",
+"options": ["Good understanding"}, "Some understanding", "Heard of it", "No idea"],
+{
+"id": 7,
+"type": "domain",
+"question": "What is your comfort level with basic math used in finance?",
+"options": ["Very comfortable"}, "Comfortable", "Somewhat", "Not comfortable"],
+{
+"id": 8,
+"type": "domain",
+"question": "Do you know how cryptocurrencies work?",
+"options": ["Yes"}, "Somewhat", "Heard of them", "Not at all"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you prefer structured problem solving?",
+"options": ["Yes"}, "Mostly", "Sometimes", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you react to financial risk analysis tasks?",
+"options": ["Confident", "Willing to try", "Nervous", "Avoid it"]
+ } ]
+,
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy working with numbers?",
+"options": ["Yes"}, "Somewhat", "A little", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "Are you good at spotting fraud or irregular patterns?",
+"options": ["Very good"}, "Good", "Okay", "Not good"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you handle pressure when dealing with financial accuracy?",
+"options": ["Very calm"}, "Somewhat calm", "Stressed", "Very stressed"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How do you feel when asked to make decisions involving risk?",
+"options": ["Confident"}, "Okay", "Unsure", "Avoid it"],
+{
+"id": 5,
+"type": "domain",
+"question": "Do you know what smart contracts are?",
+"options": ["Yes"}, "A bit", "Heard of them", "No"],
+{
+"id": 6,
+"type": "domain",
+"question": "How familiar are you with stock markets?",
+"options": ["Very familiar"}, "Somewhat", "Little", "Not familiar"],
+{
+"id": 7,
+"type": "domain",
+"question": "Do you understand how encryption keeps transactions secure?",
+"options": ["Clearly"}, "Somewhat", "Barely", "Not at all"],
+{
+"id": 8,
+"type": "domain",
+"question": "How comfortable are you with financial calculations?",
+"options": ["Very comfortable"}, "Comfortable", "Moderate", "Uncomfortable"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you think logically in high-pressure situations?",
+"options": ["Always"}, "Often", "Sometimes", "Rarely"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you handle long periods of analytical work?",
+"options": ["Very well", "Okay", "Get tired", "Cannot handle"]
+ } ]
+,
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "How curious are you about new financial technologies?",
+"options": ["Highly curious"}, "Somewhat curious", "Little curious", "Not curious"],
+{
+"id": 2,
+"type": "personality",
+"question": "Are you comfortable with documentation and compliance tasks?",
+"options": ["Very comfortable"}, "Somewhat", "Little", "Not comfortable"],
+{
+"id": 3,
+"type": "psychological",
+"question": "When dealing with money-related responsibility, how do you feel?",
+"options": ["Confident"}, "Responsible", "Worried", "Stressed"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How do you handle frequent rule changes or financial updates?",
+"options": ["Adapt quickly"}, "Adjust slowly", "Get confused", "Get irritated"],
+{
+"id": 5,
+"type": "domain",
+"question": "How familiar are you with digital currencies?",
+"options": ["Very familiar"}, "Somewhat", "Heard of them", "No idea"],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you understand peer-to-peer network systems?",
+"options": ["Yes"}, "Somewhat", "Barely", "No"],
+{
+"id": 7,
+"type": "domain",
+"question": "Are you interested in fraud detection and risk analytics?",
+"options": ["Very interested"}, "Interested", "Little interest", "No interest"],
+{
+"id": 8,
+"type": "domain",
+"question": "Do you know how digital wallets and UPI systems work?",
+"options": ["Yes"}, "A bit", "Heard of it", "No"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you prefer structured systems with clear rules?",
+"options": ["Yes"}, "Mostly", "Sometimes", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you react when handling sensitive financial information?",
+"options": ["Careful and calm", "Careful but nervous", "Anxious", "Uncomfortable"]
+ } ]
+},
+
+"product_design_management": {
+"minor": "Product Management & Design",
+"sets": {
+"set1": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy understanding user needs and solving real-world problems?",
+"options": ["Love it"}, "Like it", "Somewhat", "Not really"],
+{
+"id": 2,
+"type": "personality",
+"question": "How creative do you consider yourself?",
+"options": ["Very creative"}, "Moderately creative", "A little creative", "Not creative"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you handle deadlines and multiple tasks at once?",
+"options": ["Very well"}, "Good", "Average", "Poor"],
+{
+"id": 4,
+"type": "psychological",
+"question": "When faced with user criticism, how do you respond?",
+"options": ["Take it positively"}, "Neutral", "Feel bad", "Get discouraged"],
+{
+"id": 5,
+"type": "domain",
+"question": "How familiar are you with UX/UI concepts?",
+"options": ["Good knowledge"}, "Some knowledge", "Basic", "None"],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you understand wireframing or prototyping tools (Figma, Sketch)?",
+"options": ["Experienced"}, "Intermediate", "Beginner", "Never used"],
+{
+"id": 7,
+"type": "domain",
+"question": "How comfortable are you with evaluating product-market fit?",
+"options": ["Very comfortable"}, "Somewhat", "Little", "Not comfortable"],
+{
+"id": 8,
+"type": "domain",
+"question": "Do you know how user interviews and usability tests work?",
+"options": ["Yes"}, "Somewhat", "A bit", "No"],
+{
+"id": 9,
+"type": "personality",
+"question": "Are you good at communicating ideas to others?",
+"options": ["Excellent"}, "Good", "Average", "Poor"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you feel when making decisions with limited information?",
+"options": ["Confident", "Okay", "Unsure", "Stressed"]
+ } ]
+,
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy collaborating with teams (design, dev, marketing)?",
+"options": ["Always"}, "Usually", "Sometimes", "Rarely"],
+{
+"id": 2,
+"type": "personality",
+"question": "How open are you to feedback on your ideas?",
+"options": ["Very open"}, "Open", "A little open", "Not open"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How well do you handle fast-changing project requirements?",
+"options": ["Very well"}, "Good", "Average", "Struggle"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How do you feel during high-pressure product releases?",
+"options": ["Calm"}, "Focused", "Anxious", "Stressed"],
+{
+"id": 5,
+"type": "domain",
+"question": "Do you understand basic design principles (contrast, alignment, spacing)?",
+"options": ["Strong knowledge"}, "Good", "Basic", "None"],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you know what a product roadmap is?",
+"options": ["Yes"}, "A bit", "Heard of it", "No"],
+{
+"id": 7,
+"type": "domain",
+"question": "How comfortable are you with analyzing user metrics (retention, engagement)?",
+"options": ["Very comfortable"}, "Somewhat", "Little", "Not comfortable"],
+{
+"id": 8,
+"type": "domain",
+"question": "Have you ever used design thinking methodologies?",
+"options": ["Yes"}, "Somewhat", "Heard of it", "No"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you think from a customer perspective?",
+"options": ["Always"}, "Often", "Sometimes", "Rarely"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you react when multiple stakeholders disagree?",
+"options": ["Find a middle ground", "Stay neutral", "Get confused", "Get stressed"]
+ } ]
+,
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy planning and organizing features?",
+"options": ["Yes"}, "Sometimes", "Little", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "How well do you empathize with user problems?",
+"options": ["Very well"}, "Good", "Average", "Poorly"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you handle conflicting priorities?",
+"options": ["Prioritize calmly"}, "Take time", "Get stressed", "Struggle a lot"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How comfortable are you with giving presentations?",
+"options": ["Very comfortable"}, "Comfortable", "Nervous", "Avoid it"],
+{
+"id": 5,
+"type": "domain",
+"question": "Do you understand user personas and customer journey maps?",
+"options": ["Yes"}, "Somewhat", "A bit", "No"],
+{
+"id": 6,
+"type": "domain",
+"question": "How familiar are you with agile/scrum workflow?",
+"options": ["Very familiar"}, "Somewhat", "Little", "Not familiar"],
+{
+"id": 7,
+"type": "domain",
+"question": "Do you know the basics of prototyping?",
+"options": ["Expert"}, "Intermediate", "Beginner", "None"],
+{
+"id": 8,
+"type": "domain",
+"question": "How comfortable are you evaluating product usability?",
+"options": ["Very comfortable"}, "Somewhat", "Little", "Not comfortable"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you like thinking about long-term strategies?",
+"options": ["Yes"}, "Somewhat", "Rarely", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "When a design doesn’t work, what is your immediate reaction?",
+"options": ["Try again", "Break and retry", "Feel frustrated", "Give up"]
+ } ]
+},
+
+"cybersecurity": {
+"minor": "Blockchain & Cyber Security",
+"sets": {
+"set1": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy solving complex logical problems?",
+"options": ["Love it"}, "Like it", "Sometimes", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "How curious are you about how digital systems work internally?",
+"options": ["Very curious"}, "Somewhat curious", "A little", "Not curious"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How calm are you when dealing with high-risk scenarios?",
+"options": ["Very calm"}, "Calm", "Nervous", "Very stressed"],
+{
+"id": 4",
+"type": "psychological",
+"question": "How do you react when your code or security setup repeatedly fails?",
+"options": ["Try again patiently"}, "Take time then retry", "Get frustrated", "Give up"],
+{
+"id": 5,
+"type": "domain",
+"question": "How familiar are you with encryption concepts?",
+"options": ["Very familiar"}, "Somewhat", "Heard of it", "No idea"],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you understand how blockchain ensures data integrity?",
+"options": ["Clearly"}, "A bit", "Barely", "Not at all"],
+{
+"id": 7,
+"type": "domain",
+"question": "How comfortable are you with networking basics?",
+"options": ["Very comfortable"}, "Somewhat", "Little", "Not comfortable"],
+{
+"id": 8,
+"type": "domain",
+"question": "Have you ever tried ethical hacking or security tools?",
+"options": ["Yes"}, "A little", "Heard of them", "Never"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you enjoy working in detail-heavy tasks?",
+"options": ["Yes"}, "Mostly", "Sometimes", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you deal with long debugging sessions?",
+"options": ["Stay focused", "Stay patient", "Get irritated", "Quit"]
+ } ]
+,
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy identifying weaknesses in systems?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "Are you a detail-oriented person?",
+"options": ["Highly"}, "Moderately", "A little", "No"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How well can you stay focused for long periods?",
+"options": ["Very well"}, "Well", "Not well", "Poor"],
+{
+"id": 4,
+"type": "psychological",
+"question": "When a security threat occurs, what’s your reaction?",
+"options": ["Take control"}, "Stay calm", "Get anxious", "Panic"],
+{
+"id": 5,
+"type": "domain",
+"question": "Have you worked with hashing algorithms before?",
+"options": ["Yes"}, "A little", "Heard of them", "No"],
+{
+"id": 6,
+"type": "domain",
+"question": "How familiar are you with cyber-attacks like phishing or DDoS?",
+"options": ["Very familiar"}, "Somewhat", "Basic", "Not familiar"],
+{
+"id": 7,
+"type": "domain",
+"question": "Do you understand how distributed ledger technology works?",
+"options": ["Clearly"}, "Somewhat", "Little", "Not at all"],
+{
+"id": 8,
+"type": "domain",
+"question": "Have you ever explored cybersecurity tools like Wireshark or Burp Suite?",
+"options": ["Yes"}, "A little", "Heard of them", "Never"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you like logically breaking down problems?",
+"options": ["Yes"}, "Mostly", "Sometimes", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you respond to tasks requiring high concentration?",
+"options": ["Motivated", "Okay", "Tired", "Avoid"]
+ } ]
+,
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "Are you motivated by challenges involving digital security?",
+"options": ["Very motivated"}, "Somewhat", "Little", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "Do you enjoy understanding how systems fail?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you handle pressure during breach investigations?",
+"options": ["Calm"}, "Focused", "Stressed", "Very stressed"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How do you feel working with sensitive data?",
+"options": ["Comfortable"}, "Careful", "Nervous", "Uncomfortable"],
+{
+"id": 5,
+"type": "domain",
+"question": "Do you understand public/private key mechanisms?",
+"options": ["Strongly"}, "Somewhat", "Heard of it", "None"],
+{
+"id": 6,
+"type": "domain",
+"question": "How familiar are you with blockchain consensus algorithms?",
+"options": ["Very familiar"}, "Somewhat", "Basic", "No idea"],
+{
+"id": 7,
+"type": "domain",
+"question": "Have you explored cybersecurity reports or case studies?",
+"options": ["Many times"}, "Few times", "Once", "Never"],
+{
+"id": 8,
+"type": "domain",
+"question": "Do you have interest in ethical hacking?",
+"options": ["Strong interest"}, "Some interest", "Little interest", "No interest"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you think logically and analytically?",
+"options": ["Always"}, "Often", "Sometimes", "Rarely"],
+{
+"id": 10,
+"type": "psychological",
+"question": "When your system is compromised, how do you react?",
+"options": ["Investigate deeply", "Try to fix", "Get frustrated", "Give up"]
+ } ]
+},
+
+"energy_science": {
+"minor": "Energy Science",
+"sets": {
+"set1": [
+{
+"id": 1,
+"type": "personality",
+"question": "Are you curious about how energy powers homes, industries, and technology?",
+"options": ["Very curious"}, "Somewhat curious", "A little", "Not curious"],
+{
+"id": 2,
+"type": "personality",
+"question": "Do you enjoy solving real-world environmental or energy problems?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you handle tasks requiring long research and analysis?",
+"options": ["Very well"}, "Good", "Okay", "Poorly"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How do you feel when your experiments don’t work as expected?",
+"options": ["Try again patiently"}, "Retry slowly", "Get frustrated", "Give up"],
+{
+"id": 5,
+"type": "domain",
+"question": "How familiar are you with renewable energy sources like solar or wind?",
+"options": ["Very familiar"}, "Somewhat", "Basic", "Not familiar"],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you understand basic physics principles related to energy?",
+"options": ["Strong understanding"}, "Moderate", "Basic", "None"],
+{
+"id": 7,
+"type": "domain",
+"question": "How comfortable are you with basic math for energy calculations?",
+"options": ["Very comfortable"}, "Comfortable", "Somewhat", "Not comfortable"],
+{
+"id": 8,
+"type": "domain",
+"question": "Have you studied climate change and sustainability concepts?",
+"options": ["Yes"}, "A bit", "Heard of them", "No"],
+{
+"id": 9,
+"type": "personality",
+"question": "Are you patient with experimental or hands-on tasks?",
+"options": ["Very patient"}, "Patient", "Sometimes", "Not patient"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you react to long-duration practical work?",
+"options": ["Motivated", "Okay", "Tired", "Avoid it"]
+ } ]
+,
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy understanding how machines and natural processes produce energy?",
+"options": ["Yes"}, "Somewhat", "A little", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "Are you someone who likes practical, hands-on work?",
+"options": ["Always"}, "Often", "Sometimes", "Rarely"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you manage stress during long scientific experiments?",
+"options": ["Calm"}, "Manageable", "Stressed", "Very stressed"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How comfortable are you working with physical equipment?",
+"options": ["Very comfortable"}, "Somewhat", "Little", "Not comfortable"],
+{
+"id": 5,
+"type": "domain",
+"question": "How familiar are you with energy efficiency concepts?",
+"options": ["Very familiar"}, "Somewhat familiar", "Basic", "No idea"],
+{
+"id": 6,
+"type": "domain",
+"question": "Have you studied electricity generation or power systems?",
+"options": ["Yes"}, "A bit", "Very little", "No"],
+{
+"id": 7,
+"type": "domain",
+"question": "Do you know about carbon footprint and emissions?",
+"options": ["Yes"}, "Somewhat", "Heard of it", "No"],
+{
+"id": 8,
+"type": "domain",
+"question": "How comfortable are you analyzing scientific data?",
+"options": ["Very comfortable"}, "Comfortable", "Little comfortable", "Not comfortable"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you like exploring environmental solutions?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you handle repetitive experimental tasks?",
+"options": ["Stay focused", "Okay", "Tired", "Avoid"]
+ } ]
+,
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy learning how sustainable technologies work?",
+"options": ["Very much"}, "Somewhat", "Little", "Not at all"],
+{
+"id": 2,
+"type": "personality",
+"question": "Does protecting the environment motivate you?",
+"options": ["A lot"}, "Somewhat", "Little", "Not really"],
+{
+"id": 3,
+"type": "psychological",
+"question": "How do you react when your calculations or results are incorrect?",
+"options": ["Recheck patiently"}, "Retry", "Get upset", "Give up"],
+{
+"id": 4,
+"type": "psychological",
+"question": "How confident are you when handling scientific uncertainty?",
+"options": ["Very confident"}, "Somewhat confident", "Little confident", "Not confident"],
+{
+"id": 5,
+"type": "domain",
+"question": "How familiar are you with solar panels, batteries, or grid systems?",
+"options": ["Very familiar"}, "Somewhat", "Basic", "Not familiar"],
+{
+"id": 6,
+"type": "domain",
+"question": "Do you understand basic chemistry/physics behind energy?",
+"options": ["Strong understanding"}, "Moderate", "Basic", "None"],
+{
+"id": 7,
+"type": "domain",
+"question": "Have you studied global warming or carbon cycle?",
+"options": ["Yes"}, "Somewhat", "A little", "No"],
+{
+"id": 8,
+"type": "domain",
+"question": "How comfortable are you working with scientific graphs or reports?",
+"options": ["Very comfortable"}, "Comfortable", "Average", "Not comfortable"],
+{
+"id": 9,
+"type": "personality",
+"question": "Do you enjoy exploring real-world scientific problems?",
+"options": ["Yes"}, "Sometimes", "Rarely", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you feel working outdoors or in lab environments?",
+"options": ["Energetic", "Okay", "Tired", "Dislike it"]
+ } ]
+},
+
+"entrepreneurship": {
+"minor": "Entrepreneurship",
+"sets": {
+"set1": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy coming up with new ideas or solutions?",
+"options": ["Yes"}, "Sometimes", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "Are you comfortable taking calculated risks?",
+"options": ["Very Comfortable"}, "Somewhat", "Not Comfortable"],
+{
+"id": 3,
+"type": "personality",
+"question": "How do you feel about leading a team?",
+"options": ["Confident"}, "Neutral", "Not Comfortable"],
+{
+"id": 4,
+"type": "domain",
+"question": "What does a 'startup' mainly focus on?",
+"options": ["Innovation"}, "Large teams", "Traditional methods", "Stability"],
+{
+"id": 5,
+"type": "domain",
+"question": "What is the first step of building a business?",
+"options": ["Identifying a problem"}, "Hiring employees", "Designing logo", "Buying equipment"],
+{
+"id": 6,
+"type": "domain",
+"question": "What is a business model?",
+"options": ["A plan to make money"}, "A brand logo", "A marketing post", "A company rulebook"],
+{
+"id": 7,
+"type": "domain",
+"question": "What does ROI stand for?",
+"options": ["Return on Investment"}, "Rate of Innovation", "Right of Information", "None"],
+{
+"id": 8,
+"type": "psychological",
+"question": "Can you stay motivated even after failures?",
+"options": ["Yes"}, "Sometimes", "No"],
+{
+"id": 9,
+"type": "psychological",
+"question": "Do you handle uncertainty well?",
+"options": ["Yes"}, "Okay", "Not Really"],
+{
+"id": 10,
+"type": "psychological",
+"question": "Can you work under pressure with tight deadlines?",
+"options": ["Very Well", "Somewhat", "Poorly"]
+ } ]
+,
+"set2": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you enjoy networking and talking to new people?",
+"options": ["Yes"}, "Sometimes", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "Are you self-motivated to start projects without being told?",
+"options": ["Yes"}, "Somewhat", "No"],
+{
+"id": 3,
+"type": "personality",
+"question": "How do you prefer working?",
+"options": ["Independently"}, "In a team", "With guidance"],
+{
+"id": 4,
+"type": "domain",
+"question": "What is 'market research' used for?",
+"options": ["Understanding customers"}, "Hiring team", "Finance tracking", "Office setup"],
+{
+"id": 5,
+"type": "domain",
+"question": "A good business idea must solve what?",
+"options": ["A real problem"}, "A fun idea", "A vague concept", "A hobby"],
+{
+"id": 6,
+"type": "domain",
+"question": "What is an MVP in startups?",
+"options": ["Minimum Viable Product"}, "Most Valuable Plan", "Marketing Value Point", "Model Version Prototype"],
+{
+"id": 7,
+"type": "domain",
+"question": "What is bootstrapping?",
+"options": ["Self-funded business"}, "Government funding", "Angel investment", "Crowdfunding"],
+{
+"id": 8,
+"type": "psychological",
+"question": "Do you stay calm when facing financial or resource limitations?",
+"options": ["Yes"}, "Sometimes", "Rarely"],
+{
+"id": 9,
+"type": "psychological",
+"question": "Can you adapt quickly when plans change suddenly?",
+"options": ["Yes"}, "Somewhat", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you react when given full responsibility?",
+"options": ["Motivated", "Neutral", "Stressed"]
+ } ]
+,
+"set3": [
+{
+"id": 1,
+"type": "personality",
+"question": "Do you think creatively when solving everyday problems?",
+"options": ["Yes"}, "Sometimes", "No"],
+{
+"id": 2,
+"type": "personality",
+"question": "How comfortable are you with making decisions?",
+"options": ["Very Comfortable"}, "Somewhat", "Not Comfortable"],
+{
+"id": 3,
+"type": "personality",
+"question": "Do you enjoy taking initiative in group activities?",
+"options": ["Yes"}, "Sometimes", "No"],
+{
+"id": 4,
+"type": "domain",
+"question": "What is a pitch deck?",
+"options": ["Investor presentation"}, "Product manual", "Marketing flyer", "Legal document"],
+{
+"id": 5,
+"type": "domain",
+"question": "Which of these is essential for a startup?",
+"options": ["Customer validation"}, "Expensive office", "Large team", "Fancy branding"],
+{
+"id": 6,
+"type": "domain",
+"question": "What does 'valuation' mean?",
+"options": [
+"How much a company is worth"},
+"Cost of product",
+"Amount of profit",
+"Employee salary"
+],
+{
+"id": 7,
+"type": "domain",
+"question": "Who invests in early-stage startups?",
+"options": ["Angel Investors"}, "School Teachers", "Random Public", "HR Managers"],
+{
+"id": 8,
+"type": "psychological",
+"question": "Are you good at managing stress during uncertainty?",
+"options": ["Yes"}, "Sometimes", "Rarely"],
+{
+"id": 9,
+"type": "psychological",
+"question": "Do you take feedback positively?",
+"options": ["Always"}, "Sometimes", "No"],
+{
+"id": 10,
+"type": "psychological",
+"question": "How do you approach solving a big challenge?",
+"options": [
+"Break it into smaller parts",
+"Ask others to solve",
+"Avoid it"
+]
+ } ]
