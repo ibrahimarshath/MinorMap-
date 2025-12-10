@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const fileUserStore = require('../utils/fileUserStore');
+const User = require('../models/User');
 
 // Generate JWT Token
 const generateToken = (id) => {
@@ -24,24 +24,23 @@ exports.register = async (req, res, next) => {
     }
 
     // Check if user exists
-    const userExists = await fileUserStore.findOne({ email });
+    const userExists = await User.findOne({ email: String(email).toLowerCase() });
     if (userExists) {
       return res.status(400).json({
         success: false,
         message: 'User already exists with this email',
       });
     }
-
-    // Create user (stored in file)
-    const created = await fileUserStore.create({
+    // Create user (in MongoDB)
+    const created = await User.create({
       name,
-      email,
+      email: String(email).toLowerCase(),
       password,
       role: 'student',
     });
 
-    // Generate token (use created.id)
-    const token = generateToken(created.id || created._id);
+    // Generate token (use created._id)
+    const token = generateToken(created._id.toString());
 
     res.status(201).json({
       success: true,
@@ -49,7 +48,7 @@ exports.register = async (req, res, next) => {
       data: {
         token,
         user: {
-          id: created.id || created._id,
+          id: created._id.toString(),
           name: created.name,
           email: created.email,
           role: created.role,
@@ -76,8 +75,8 @@ exports.login = async (req, res, next) => {
       });
     }
 
-    // Check for user and include password for comparison (file store)
-    const userWithPassword = await fileUserStore.findOne({ email });
+    // Check for user in DB and include password for comparison
+    const userWithPassword = await User.findOne({ email: String(email).toLowerCase() }).select('+password');
 
     if (!userWithPassword) {
       return res.status(401).json({
@@ -86,7 +85,7 @@ exports.login = async (req, res, next) => {
       });
     }
     // Check if password matches
-    const isMatch = await fileUserStore.comparePassword(password, userWithPassword.password);
+    const isMatch = await userWithPassword.matchPassword(password);
 
     if (!isMatch) {
       return res.status(401).json({
@@ -94,12 +93,8 @@ exports.login = async (req, res, next) => {
         message: 'Invalid credentials',
       });
     }
-
     // Generate token
-    const token = generateToken(userWithPassword.id || userWithPassword._id);
-
-    // Return user without password
-    const { password: pw, ...safeUser } = userWithPassword;
+    const token = generateToken(userWithPassword._id.toString());
 
     res.status(200).json({
       success: true,
@@ -107,10 +102,10 @@ exports.login = async (req, res, next) => {
       data: {
         token,
         user: {
-          id: safeUser.id || safeUser._id,
-          name: safeUser.name,
-          email: safeUser.email,
-          role: safeUser.role,
+          id: userWithPassword._id.toString(),
+          name: userWithPassword.name,
+          email: userWithPassword.email,
+          role: userWithPassword.role,
         },
       },
     });
@@ -124,13 +119,17 @@ exports.login = async (req, res, next) => {
 // @access  Private
 exports.getMe = async (req, res, next) => {
   try {
-    const user = await fileUserStore.findById(req.user.id);
+    const user = await User.findById(req.user.id).select('-password');
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
 
     res.status(200).json({
       success: true,
       data: {
         user: {
-          id: user.id || user._id,
+          id: user._id.toString(),
           name: user.name,
           email: user.email,
           role: user.role,

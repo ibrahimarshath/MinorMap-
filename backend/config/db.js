@@ -8,8 +8,11 @@ const connectDB = async () => {
   }
   try {
     const conn = await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // Modern MongoDB driver no longer needs these legacy flags.
+      // Add serverSelectionTimeoutMS to fail fast if server isn't reachable
+      serverSelectionTimeoutMS: 10000,
+      // Prefer IPv4 to avoid issues on some Windows IPv6 setups
+      family: 4,
     });
 
     console.log(`MongoDB Connected: ${conn.connection.host}`);

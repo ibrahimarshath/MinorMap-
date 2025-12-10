@@ -34,6 +34,7 @@ exports.listQuizzes = async (req, res, next) => {
 };
 
 // Get questions for a given minor
+// Get questions for a given minor
 exports.getQuizByMinor = async (req, res, next) => {
   try {
     const minorId = req.params.minorId;
@@ -43,19 +44,31 @@ exports.getQuizByMinor = async (req, res, next) => {
     res.set('Pragma', 'no-cache');
     res.set('Expires', '0');
 
-    // Try DB first: find questions that have weights for this minor
+    // Try DB first (New Schema)
     try {
-      const dbQuestions = await Question.find({ [`weights.${minorId}`]: { $exists: true } });
-      if (dbQuestions && dbQuestions.length) {
-        const sanitized = dbQuestions.map(q => ({
-          id: q._id.toString(),
-          question: q.text,
-          options: q.options.map(o => o.text)
-        }));
-        return res.json({ success: true, count: sanitized.length, data: sanitized });
+      // Find distinct sets available for this minor
+      const sets = await Question.distinct('set', { minorId: minorId });
+
+      if (sets && sets.length > 0) {
+        // Randomly select one set
+        const randomSet = sets[Math.floor(Math.random() * sets.length)];
+
+        // Fetch questions for this set
+        const dbQuestions = await Question.find({ minorId: minorId, set: randomSet }).sort({ originalId: 1 });
+
+        if (dbQuestions && dbQuestions.length > 0) {
+          const sanitized = dbQuestions.map(q => ({
+            id: q.originalId,
+            question: q.question,
+            type: q.type,
+            options: q.options
+          }));
+          return res.json({ success: true, count: sanitized.length, data: sanitized, set: randomSet });
+        }
       }
     } catch (e) {
-      // ignore DB errors and fallback
+      console.error("DB Fetch failed, falling back to file data:", e.message);
+      // Fallback continues...
     }
 
     // Fallback to in-memory quizBank

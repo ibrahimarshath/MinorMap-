@@ -1,79 +1,100 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const Minor = require('../models/Minor');
-const Question = require('../models/Question');
-const User = require('../models/User');
-const { quizBank } = require('../controllers/quizBankController');
+const path = require('path');
+const fs = require('fs');
 
 // Load env vars
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
-// Connect to database
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/MinorMap_DB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const User = require('../models/User');
+const Minor = require('../models/Minor');
+const Question = require('../models/Question');
 
-const seedData = async () => {
+// Import data
+// Note: quizBankController might be exporting using 'exports.quizBank = ...'
+// We need to handle how it's required.
+// If it's CommonJS, require should work.
+const { quizBank } = require('../controllers/quizBankController');
+const usersData = require('../data/users.json');
+
+const connectDB = require('../config/db');
+
+const seed = async () => {
   try {
-    // Clear existing data
-    await Minor.deleteMany();
-    await Question.deleteMany();
+    console.log("Connecting to DB...");
+    // Define simple connection if config/db fails or is complex
+    const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/minormap';
+    await mongoose.connect(uri, { family: 4 });
+    console.log("Connected.");
 
-    // Build minors from quizBank keys
-    const minorIds = Object.keys(quizBank);
-    const minors = minorIds.map(id => ({
-      id,
-      name: id.split(/-|_/).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' '),
-      description: `Eligibility quiz for ${id}`,
+    // 1. Users
+    console.log("Seeding Users...");
+    await User.deleteMany({});
+
+    // Clean users data (remove IDs, ensure valid)
+    // We use insertMany to avoid the pre-save hook from re-hashing the already hashed passwords
+    const cleanUsers = usersData.map(u => ({
+      name: u.name,
+      email: u.email,
+      password: u.password,
+      role: u.role || 'student'
     }));
 
-    if (minors.length) {
-      await Minor.insertMany(minors);
-      console.log(`✅ Inserted ${minors.length} minors`);
-    } else {
-      console.log('⚠️  No minors found in quizBank');
+    if (cleanUsers.length > 0) {
+      await User.insertMany(cleanUsers);
     }
+    console.log(`Imported ${cleanUsers.length} Users.`);
 
-    // Build question documents
-    const questionDocs = [];
-    minorIds.forEach(minorId => {
-      const questions = quizBank[minorId] || [];
-      questions.forEach(q => {
-        const options = (q.options || []).map(opt => ({ text: opt, value: opt === q.correct }));
-        const weights = { [minorId]: 3 }; // emphasize the corresponding minor
-        questionDocs.push({ text: q.question, options, weights });
+    // 2. Minors & Questions
+    console.log("Seeding Minors and Questions...");
+    await Minor.deleteMany({});
+    await Question.deleteMany({});
+
+    const minorsList = [];
+    const questionsList = [];
+
+    // quizBank structure: { "ai-ml": { minor: "Name", sets: { set1: [...] } } }
+    for (const [key, data] of Object.entries(quizBank)) {
+      // Create Minor
+      minorsList.push({
+        id: key,
+        name: data.minor,
+        description: `${data.minor} Studies`, // Simple fallback
       });
-    });
 
-    if (questionDocs.length) {
-      await Question.insertMany(questionDocs);
-      console.log(`✅ Inserted ${questionDocs.length} questions`);
-    } else {
-      console.log('⚠️  No questions to insert');
+      // Extract Questions
+      if (data.sets) {
+        for (const [setKey, setQuestions] of Object.entries(data.sets)) {
+          // setKey = 'set1'
+          if (Array.isArray(setQuestions)) {
+            setQuestions.forEach(q => {
+              questionsList.push({
+                minorId: key,
+                set: setKey,
+                originalId: q.id,
+                type: q.type,
+                question: q.question,
+                options: q.options
+              });
+            });
+          }
+        }
+      }
     }
 
-    // Create default admin user
-    const adminExists = await User.findOne({ email: 'admin@minormap.com' });
-    if (!adminExists) {
-      await User.create({
-        name: 'Admin',
-        email: 'admin@minormap.com',
-        password: 'admin123',
-        role: 'admin',
-      });
-      console.log('✅ Admin user created (email: admin@minormap.com, password: admin123)');
-    } else {
-      console.log('ℹ️  Admin user already exists');
-    }
+    await Minor.insertMany(minorsList);
+    console.log(`Imported ${minorsList.length} Minors.`);
 
-    console.log('\n🎉 Database seeding completed!');
+    await Question.insertMany(questionsList);
+    console.log(`Imported ${questionsList.length} Questions.`);
+
+    console.log("Seeding Complete!");
     process.exit(0);
-  } catch (error) {
-    console.error('❌ Error seeding database:', error);
+
+  } catch (e) {
+    console.error("Seeding Failed:", e);
     process.exit(1);
   }
 };
 
-seedData();
-
+seed();
